@@ -9,21 +9,71 @@
 /* Begin PBXBuildFile section */
 		030C2C7B2911C8D2003F4F40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C7A2911C8D2003F4F40 /* AppDelegate.swift */; };
 		030C2C7D2911C8D2003F4F40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C7C2911C8D2003F4F40 /* SceneDelegate.swift */; };
-		030C2C7F2911C8D2003F4F40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C7E2911C8D2003F4F40 /* ViewController.swift */; };
-		030C2C822911C8D2003F4F40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030C2C802911C8D2003F4F40 /* Main.storyboard */; };
 		030C2C842911C8D4003F4F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030C2C832911C8D4003F4F40 /* Assets.xcassets */; };
 		030C2C872911C8D4003F4F40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030C2C852911C8D4003F4F40 /* LaunchScreen.storyboard */; };
+		030C2C922911CA41003F4F40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C912911CA41003F4F40 /* BaseViewController.swift */; };
+		030C2C952911CA54003F4F40 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C942911CA54003F4F40 /* ActionButton.swift */; };
+		030C2C992911CA79003F4F40 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C982911CA79003F4F40 /* DrawViewController.swift */; };
+		030C2C9D2911CA81003F4F40 /* EditBrushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C9A2911CA81003F4F40 /* EditBrushViewController.swift */; };
+		030C2C9E2911CA81003F4F40 /* EditBrushViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C9B2911CA81003F4F40 /* EditBrushViewControllerDelegate.swift */; };
+		030C2C9F2911CA81003F4F40 /* EditBrushAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2C9C2911CA81003F4F40 /* EditBrushAction.swift */; };
+		030C2CA22911CA8D003F4F40 /* EditLineTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CA02911CA8C003F4F40 /* EditLineTypeViewController.swift */; };
+		030C2CA32911CA8D003F4F40 /* EditLineWidthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CA12911CA8D003F4F40 /* EditLineWidthViewController.swift */; };
+		030C2CA72911CAA5003F4F40 /* NextPrevNavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CA52911CAA5003F4F40 /* NextPrevNavTitleView.swift */; };
+		030C2CA82911CAA5003F4F40 /* SliderDashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CA62911CAA5003F4F40 /* SliderDashedLineView.swift */; };
+		030C2CAF2911CAB9003F4F40 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CAA2911CAB8003F4F40 /* Line.swift */; };
+		030C2CB02911CAB9003F4F40 /* DrawnLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CAB2911CAB8003F4F40 /* DrawnLayout.swift */; };
+		030C2CB12911CAB9003F4F40 /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CAC2911CAB9003F4F40 /* Lines.swift */; };
+		030C2CB22911CAB9003F4F40 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CAD2911CAB9003F4F40 /* LineType.swift */; };
+		030C2CB32911CAB9003F4F40 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CAE2911CAB9003F4F40 /* DrawableView.swift */; };
+		030C2CBF2911CAD6003F4F40 /* TransitionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CB52911CAD5003F4F40 /* TransitionProvider.swift */; };
+		030C2CC02911CAD6003F4F40 /* TransmissionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CB62911CAD5003F4F40 /* TransmissionDriver.swift */; };
+		030C2CC12911CAD6003F4F40 /* TransitionProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CB72911CAD5003F4F40 /* TransitionProviderDelegate.swift */; };
+		030C2CC22911CAD6003F4F40 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CB82911CAD5003F4F40 /* PresentAnimation.swift */; };
+		030C2CC32911CAD7003F4F40 /* DimmDismissedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CB92911CAD6003F4F40 /* DimmDismissedDelegate.swift */; };
+		030C2CC42911CAD7003F4F40 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBA2911CAD6003F4F40 /* DismissAnimation.swift */; };
+		030C2CC52911CAD7003F4F40 /* TransitionAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBB2911CAD6003F4F40 /* TransitionAnimated.swift */; };
+		030C2CC62911CAD7003F4F40 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBC2911CAD6003F4F40 /* PresentationController.swift */; };
+		030C2CC72911CAD7003F4F40 /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBD2911CAD6003F4F40 /* TransitionDirection.swift */; };
+		030C2CC82911CAD7003F4F40 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBE2911CAD6003F4F40 /* DimmPresentationController.swift */; };
+		DFCB051E30A14C2BA14942BC /* Pods_DrawApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1E969111FE3CF8C4C23A2D /* Pods_DrawApplication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		030C2C772911C8D2003F4F40 /* DrawApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		030C2C7A2911C8D2003F4F40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		030C2C7C2911C8D2003F4F40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		030C2C7E2911C8D2003F4F40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		030C2C812911C8D2003F4F40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		030C2C832911C8D4003F4F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		030C2C862911C8D4003F4F40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		030C2C882911C8D4003F4F40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		030C2C912911CA41003F4F40 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		030C2C942911CA54003F4F40 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		030C2C982911CA79003F4F40 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		030C2C9A2911CA81003F4F40 /* EditBrushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBrushViewController.swift; sourceTree = "<group>"; };
+		030C2C9B2911CA81003F4F40 /* EditBrushViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBrushViewControllerDelegate.swift; sourceTree = "<group>"; };
+		030C2C9C2911CA81003F4F40 /* EditBrushAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBrushAction.swift; sourceTree = "<group>"; };
+		030C2CA02911CA8C003F4F40 /* EditLineTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLineTypeViewController.swift; sourceTree = "<group>"; };
+		030C2CA12911CA8D003F4F40 /* EditLineWidthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLineWidthViewController.swift; sourceTree = "<group>"; };
+		030C2CA52911CAA5003F4F40 /* NextPrevNavTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPrevNavTitleView.swift; sourceTree = "<group>"; };
+		030C2CA62911CAA5003F4F40 /* SliderDashedLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDashedLineView.swift; sourceTree = "<group>"; };
+		030C2CAA2911CAB8003F4F40 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		030C2CAB2911CAB8003F4F40 /* DrawnLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawnLayout.swift; sourceTree = "<group>"; };
+		030C2CAC2911CAB9003F4F40 /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lines.swift; sourceTree = "<group>"; };
+		030C2CAD2911CAB9003F4F40 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
+		030C2CAE2911CAB9003F4F40 /* DrawableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
+		030C2CB52911CAD5003F4F40 /* TransitionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionProvider.swift; sourceTree = "<group>"; };
+		030C2CB62911CAD5003F4F40 /* TransmissionDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmissionDriver.swift; sourceTree = "<group>"; };
+		030C2CB72911CAD5003F4F40 /* TransitionProviderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionProviderDelegate.swift; sourceTree = "<group>"; };
+		030C2CB82911CAD5003F4F40 /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
+		030C2CB92911CAD6003F4F40 /* DimmDismissedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmDismissedDelegate.swift; sourceTree = "<group>"; };
+		030C2CBA2911CAD6003F4F40 /* DismissAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
+		030C2CBB2911CAD6003F4F40 /* TransitionAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimated.swift; sourceTree = "<group>"; };
+		030C2CBC2911CAD6003F4F40 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		030C2CBD2911CAD6003F4F40 /* TransitionDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
+		030C2CBE2911CAD6003F4F40 /* DimmPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmPresentationController.swift; sourceTree = "<group>"; };
+		7E1E969111FE3CF8C4C23A2D /* Pods_DrawApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3D126AF46D73484B12F34B /* Pods-DrawApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawApplication.release.xcconfig"; path = "Target Support Files/Pods-DrawApplication/Pods-DrawApplication.release.xcconfig"; sourceTree = "<group>"; };
+		F74C36990B864EAF7EED2AB6 /* Pods-DrawApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawApplication.debug.xcconfig"; path = "Target Support Files/Pods-DrawApplication/Pods-DrawApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFCB051E30A14C2BA14942BC /* Pods_DrawApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +93,8 @@
 			children = (
 				030C2C792911C8D2003F4F40 /* DrawApplication */,
 				030C2C782911C8D2003F4F40 /* Products */,
+				392F24CE602418E9B31DA615 /* Pods */,
+				129F9116DF71493171660F53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +109,127 @@
 		030C2C792911C8D2003F4F40 /* DrawApplication */ = {
 			isa = PBXGroup;
 			children = (
-				030C2C7A2911C8D2003F4F40 /* AppDelegate.swift */,
-				030C2C7C2911C8D2003F4F40 /* SceneDelegate.swift */,
-				030C2C7E2911C8D2003F4F40 /* ViewController.swift */,
-				030C2C802911C8D2003F4F40 /* Main.storyboard */,
-				030C2C832911C8D4003F4F40 /* Assets.xcassets */,
-				030C2C852911C8D4003F4F40 /* LaunchScreen.storyboard */,
-				030C2C882911C8D4003F4F40 /* Info.plist */,
+				030C2C8E2911CA0E003F4F40 /* App */,
+				030C2C8F2911CA21003F4F40 /* Support */,
+				030C2C902911CA32003F4F40 /* Base */,
+				030C2CA42911CA99003F4F40 /* Views */,
+				030C2C962911CA5F003F4F40 /* ViewControllers */,
+				030C2CB42911CAC8003F4F40 /* CustomPresentation */,
 			);
 			path = DrawApplication;
+			sourceTree = "<group>";
+		};
+		030C2C8E2911CA0E003F4F40 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C7A2911C8D2003F4F40 /* AppDelegate.swift */,
+				030C2C7C2911C8D2003F4F40 /* SceneDelegate.swift */,
+				030C2C852911C8D4003F4F40 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		030C2C8F2911CA21003F4F40 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C832911C8D4003F4F40 /* Assets.xcassets */,
+				030C2C882911C8D4003F4F40 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		030C2C902911CA32003F4F40 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C912911CA41003F4F40 /* BaseViewController.swift */,
+				030C2C932911CA4A003F4F40 /* Buttons */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		030C2C932911CA4A003F4F40 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C942911CA54003F4F40 /* ActionButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		030C2C962911CA5F003F4F40 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C982911CA79003F4F40 /* DrawViewController.swift */,
+				030C2C972911CA70003F4F40 /* EditBrushViewController */,
+				030C2CA02911CA8C003F4F40 /* EditLineTypeViewController.swift */,
+				030C2CA12911CA8D003F4F40 /* EditLineWidthViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		030C2C972911CA70003F4F40 /* EditBrushViewController */ = {
+			isa = PBXGroup;
+			children = (
+				030C2C9C2911CA81003F4F40 /* EditBrushAction.swift */,
+				030C2C9A2911CA81003F4F40 /* EditBrushViewController.swift */,
+				030C2C9B2911CA81003F4F40 /* EditBrushViewControllerDelegate.swift */,
+			);
+			path = EditBrushViewController;
+			sourceTree = "<group>";
+		};
+		030C2CA42911CA99003F4F40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				030C2CA92911CAAB003F4F40 /* DrawableView */,
+				030C2CA52911CAA5003F4F40 /* NextPrevNavTitleView.swift */,
+				030C2CA62911CAA5003F4F40 /* SliderDashedLineView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		030C2CA92911CAAB003F4F40 /* DrawableView */ = {
+			isa = PBXGroup;
+			children = (
+				030C2CAE2911CAB9003F4F40 /* DrawableView.swift */,
+				030C2CAB2911CAB8003F4F40 /* DrawnLayout.swift */,
+				030C2CAA2911CAB8003F4F40 /* Line.swift */,
+				030C2CAC2911CAB9003F4F40 /* Lines.swift */,
+				030C2CAD2911CAB9003F4F40 /* LineType.swift */,
+			);
+			path = DrawableView;
+			sourceTree = "<group>";
+		};
+		030C2CB42911CAC8003F4F40 /* CustomPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				030C2CB92911CAD6003F4F40 /* DimmDismissedDelegate.swift */,
+				030C2CBE2911CAD6003F4F40 /* DimmPresentationController.swift */,
+				030C2CBA2911CAD6003F4F40 /* DismissAnimation.swift */,
+				030C2CB82911CAD5003F4F40 /* PresentAnimation.swift */,
+				030C2CBC2911CAD6003F4F40 /* PresentationController.swift */,
+				030C2CBB2911CAD6003F4F40 /* TransitionAnimated.swift */,
+				030C2CBD2911CAD6003F4F40 /* TransitionDirection.swift */,
+				030C2CB52911CAD5003F4F40 /* TransitionProvider.swift */,
+				030C2CB72911CAD5003F4F40 /* TransitionProviderDelegate.swift */,
+				030C2CB62911CAD5003F4F40 /* TransmissionDriver.swift */,
+			);
+			path = CustomPresentation;
+			sourceTree = "<group>";
+		};
+		129F9116DF71493171660F53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E1E969111FE3CF8C4C23A2D /* Pods_DrawApplication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		392F24CE602418E9B31DA615 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F74C36990B864EAF7EED2AB6 /* Pods-DrawApplication.debug.xcconfig */,
+				BC3D126AF46D73484B12F34B /* Pods-DrawApplication.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 030C2C8B2911C8D4003F4F40 /* Build configuration list for PBXNativeTarget "DrawApplication" */;
 			buildPhases = (
+				2656248A8E6F2F8C267D64D2 /* [CP] Check Pods Manifest.lock */,
 				030C2C732911C8D2003F4F40 /* Sources */,
 				030C2C742911C8D2003F4F40 /* Frameworks */,
 				030C2C752911C8D2003F4F40 /* Resources */,
+				4E90D052908A1DC9652405F9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +294,91 @@
 			files = (
 				030C2C872911C8D4003F4F40 /* LaunchScreen.storyboard in Resources */,
 				030C2C842911C8D4003F4F40 /* Assets.xcassets in Resources */,
-				030C2C822911C8D2003F4F40 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2656248A8E6F2F8C267D64D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrawApplication-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E90D052908A1DC9652405F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrawApplication/Pods-DrawApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrawApplication/Pods-DrawApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DrawApplication/Pods-DrawApplication-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		030C2C732911C8D2003F4F40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030C2C7F2911C8D2003F4F40 /* ViewController.swift in Sources */,
+				030C2CC52911CAD7003F4F40 /* TransitionAnimated.swift in Sources */,
+				030C2CB22911CAB9003F4F40 /* LineType.swift in Sources */,
+				030C2C992911CA79003F4F40 /* DrawViewController.swift in Sources */,
+				030C2CB12911CAB9003F4F40 /* Lines.swift in Sources */,
+				030C2C9F2911CA81003F4F40 /* EditBrushAction.swift in Sources */,
+				030C2CC42911CAD7003F4F40 /* DismissAnimation.swift in Sources */,
+				030C2CC02911CAD6003F4F40 /* TransmissionDriver.swift in Sources */,
+				030C2CA72911CAA5003F4F40 /* NextPrevNavTitleView.swift in Sources */,
+				030C2CC62911CAD7003F4F40 /* PresentationController.swift in Sources */,
+				030C2CB32911CAB9003F4F40 /* DrawableView.swift in Sources */,
+				030C2CBF2911CAD6003F4F40 /* TransitionProvider.swift in Sources */,
+				030C2CB02911CAB9003F4F40 /* DrawnLayout.swift in Sources */,
+				030C2CC22911CAD6003F4F40 /* PresentAnimation.swift in Sources */,
+				030C2C9D2911CA81003F4F40 /* EditBrushViewController.swift in Sources */,
+				030C2CAF2911CAB9003F4F40 /* Line.swift in Sources */,
+				030C2CC82911CAD7003F4F40 /* DimmPresentationController.swift in Sources */,
+				030C2CA22911CA8D003F4F40 /* EditLineTypeViewController.swift in Sources */,
+				030C2CA82911CAA5003F4F40 /* SliderDashedLineView.swift in Sources */,
+				030C2C922911CA41003F4F40 /* BaseViewController.swift in Sources */,
+				030C2C9E2911CA81003F4F40 /* EditBrushViewControllerDelegate.swift in Sources */,
+				030C2CC72911CAD7003F4F40 /* TransitionDirection.swift in Sources */,
+				030C2CC12911CAD6003F4F40 /* TransitionProviderDelegate.swift in Sources */,
 				030C2C7B2911C8D2003F4F40 /* AppDelegate.swift in Sources */,
+				030C2CC32911CAD7003F4F40 /* DimmDismissedDelegate.swift in Sources */,
+				030C2CA32911CA8D003F4F40 /* EditLineWidthViewController.swift in Sources */,
 				030C2C7D2911C8D2003F4F40 /* SceneDelegate.swift in Sources */,
+				030C2C952911CA54003F4F40 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		030C2C802911C8D2003F4F40 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				030C2C812911C8D2003F4F40 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		030C2C852911C8D4003F4F40 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +508,7 @@
 		};
 		030C2C8C2911C8D4003F4F40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F74C36990B864EAF7EED2AB6 /* Pods-DrawApplication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,12 +516,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95G8586896;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DrawApplication/Info.plist;
+				INFOPLIST_FILE = DrawApplication/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,12 +533,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		030C2C8D2911C8D4003F4F40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC3D126AF46D73484B12F34B /* Pods-DrawApplication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -319,12 +547,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95G8586896;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DrawApplication/Info.plist;
+				INFOPLIST_FILE = DrawApplication/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +564,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "straight-horizontal-line_icon-icons.com_74237.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}
