@@ -29,6 +29,7 @@ class DrawableView: UIView {
     private var state: DrawableViewState = .draw
     private var eraseWidth: CGFloat = 10
     weak var delegate: DrawableViewDelegate?
+    private var initialLayout: Layout?
     
     private var longGesture = UILongPressGestureRecognizer()
     
@@ -49,8 +50,12 @@ class DrawableView: UIView {
         layout.currentState
     }
     
-    init(with delegate: DrawableViewDelegate) {
-        self.delegate = delegate
+    var currentLayout: Layout? {
+        layout.currentLayout
+    }
+    
+    init(with initialLayout: Layout?) {
+        self.initialLayout = initialLayout
         super.init(frame: .zero)
         layer.cornerRadius = 8
         layer.borderWidth = 1
@@ -109,20 +114,21 @@ class DrawableView: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        if state == .draw {
-            if layout.currentLayout?.lines.last?.points.isEmpty == true {
-                layout.removeLastLayout()
-            }
+        if layout.currentLayout?.lines.last?.points.isEmpty == true {
+            layout.removeLastLayout()
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        if state == .draw {
-            if layout.currentLayout?.lines.last?.points.isEmpty == true {
-                layout.removeLastLayout()
-            }
+        if layout.currentLayout?.lines.last?.points.isEmpty == true {
+            layout.removeLastLayout()
         }
+    }
+    
+    func setupInitialLayoutIfNeeded() {
+        self.layout.setupInitialLayoutIfNeeded(with: initialLayout)
+        setNeedsDisplay()
     }
     
     func clear() {

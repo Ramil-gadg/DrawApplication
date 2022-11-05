@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Lines {
+struct Layout {
     
     var lines: [Line] = []
     var eraseLines: [Line] = []

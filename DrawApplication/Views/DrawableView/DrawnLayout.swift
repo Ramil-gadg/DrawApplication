@@ -15,16 +15,16 @@ class DrawnLayout {
     
     weak var delegate: DrawnLayoutDelegate?
     
-    var layout: [Lines] = [Lines()]
-    var currentLayoutIndex: Int = 0
-    var currentWidth = 10
-    var currentColor: UIColor = .red
+    private (set) var layouts: [Layout] = [Layout()]
+    private (set) var currentLayoutIndex: Int = 0
+    var currentWidth = 6
+    var currentColor: UIColor = .black
     var currentLineType: LineType = .solid
     var currentState: DrawableViewState = .draw
     
-    var currentLayout: Lines? {
-        guard layout.count > 0 else { return nil }
-        return layout[currentLayoutIndex]
+    var currentLayout: Layout? {
+        guard layouts.count > 0 else { return nil }
+        return layouts[currentLayoutIndex]
     }
     
     init(with delegate: DrawnLayoutDelegate) {
@@ -32,41 +32,42 @@ class DrawnLayout {
         checkState()
     }
     
-    subscript(index: Int) -> Lines {
-        return layout[index]
+    func setupInitialLayoutIfNeeded(with layout: Layout?) {
+        layouts = [layout ?? Layout()]
+        checkState()
     }
     
     func setupNewLayout() {
-        guard layout.count > 0 else {
-            layout.append(Lines())
+        guard layouts.count > 0 else {
+            layouts.append(Layout())
             appendLine()
             checkState()
             return
         }
         /// удаляем из массива все изменения, которые больше индексом
         /// и дублируем текущий лаяут в массив для его преобразования
-        if currentLayoutIndex > layout.count - 1 {
-            currentLayoutIndex = layout.count - 1
+        if currentLayoutIndex > layouts.count - 1 {
+            currentLayoutIndex = layouts.count - 1
         }
-        layout = Array(layout[0...currentLayoutIndex])
-        layout.append(currentLayout!)
+        layouts = Array(layouts[0...currentLayoutIndex])
+        layouts.append(currentLayout!)
         appendLine()
         checkState()
     }
     
     private func appendLine() {
-        guard layout.count > 0 else { return }
-        currentLayoutIndex = layout.count - 1
+        guard layouts.count > 0 else { return }
+        currentLayoutIndex = layouts.count - 1
         let color = currentState == .draw ? currentColor : .white
-        layout[currentLayoutIndex].appendLine(Line(points: [], lineWidth: currentWidth, lineColor: color, lineType: currentLineType))
+        layouts[currentLayoutIndex].appendLine(Line(points: [], lineWidth: currentWidth, lineColor: color, lineType: currentLineType))
     }
     
     private func checkState() {
-        if layout.count < 2 {
+        if layouts.count < 2 {
             delegate?.indexInEdge(with: .empty)
             return
         }
-        if currentLayoutIndex == layout.count - 1 {
+        if currentLayoutIndex == layouts.count - 1 {
             delegate?.indexInEdge(with: .max)
             return
         }
@@ -78,19 +79,19 @@ class DrawnLayout {
     }
     
     func appendPointInCurrentLine(_ point: CGPoint) {
-        guard layout.count > 0 else { return }
-        layout[currentLayoutIndex].appendPoint(point)
+        guard layouts.count > 0 else { return }
+        layouts[currentLayoutIndex].appendPoint(point)
     }
     
     func clearLayout() {
         currentLayoutIndex = 0
-        layout = [Lines()]
+        layouts = [Layout()]
         checkState()
     }
     
     func removeLastLayout() {
         currentLayoutIndex -= 1
-        layout.removeLast()
+        layouts.removeLast()
         checkState()
     }
     
@@ -102,7 +103,7 @@ class DrawnLayout {
     }
     
     func increaseIndex() {
-        if currentLayoutIndex < layout.count - 1 {
+        if currentLayoutIndex < layouts.count - 1 {
             currentLayoutIndex += 1
         }
         checkState()

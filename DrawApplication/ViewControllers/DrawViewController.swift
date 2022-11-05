@@ -7,15 +7,35 @@
 
 import UIKit
 
+protocol DrawViewControllerDelegate: AnyObject {
+    func savePicture(index: Int?, image: UIImage?, layout: Layout?)
+}
+
 class DrawViewController: BaseViewController {
+    
+    weak var delegate: DrawViewControllerDelegate?
+    private let index: Int?
 
     private var navTitleView = NextPrevNavTitleView()
 
-    private lazy var drawableView: DrawableView = {
-        let view = DrawableView(with: self)
-        return view
-    }()
-
+    private var drawableView: DrawableView
+    
+    init(index: Int?, layout: Layout?) {
+        self.index = index
+        drawableView = DrawableView(with: layout)
+        super.init(nibName: nil, bundle: nil)
+        drawableView.delegate = self
+        drawableView.setupInitialLayoutIfNeeded()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init() {
+        self.init(index: nil, layout: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,10 +71,10 @@ class DrawViewController: BaseViewController {
     private func initConstraints() {
         
         drawableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-8)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
         }
     }
     
@@ -78,7 +98,14 @@ class DrawViewController: BaseViewController {
         drawableView.clear()
     }
     @objc func savePrint() {
-        
+        let renderer = UIGraphicsImageRenderer(size: drawableView.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: drawableView.bounds, afterScreenUpdates: true)
+        }
+        if drawableView.currentLayout?.lines.isEmpty == false {
+            delegate?.savePicture(index: index, image: image, layout: drawableView.currentLayout)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
