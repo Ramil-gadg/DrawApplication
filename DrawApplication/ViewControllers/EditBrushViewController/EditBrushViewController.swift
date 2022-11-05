@@ -8,7 +8,6 @@
 import UIKit
 
 class EditBrushViewController: BaseViewController {
-        
     private weak var delegate: EditBrushViewControllerDelegate?
     private var currentColor: UIColor
     private var currentWidth: Int

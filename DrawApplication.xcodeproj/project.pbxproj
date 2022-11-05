@@ -38,6 +38,7 @@
 		030C2CC82911CAD7003F4F40 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C2CBE2911CAD6003F4F40 /* DimmPresentationController.swift */; };
 		035E09812911D01300FCCFE0 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E09802911D01300FCCFE0 /* PicturesViewController.swift */; };
 		035E09832911D26400FCCFE0 /* PicterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E09822911D26400FCCFE0 /* PicterCollectionViewCell.swift */; };
+		035E09862916C54C00FCCFE0 /* PictureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E09852916C54C00FCCFE0 /* PictureItem.swift */; };
 		DFCB051E30A14C2BA14942BC /* Pods_DrawApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1E969111FE3CF8C4C23A2D /* Pods_DrawApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		030C2CBE2911CAD6003F4F40 /* DimmPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmPresentationController.swift; sourceTree = "<group>"; };
 		035E09802911D01300FCCFE0 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		035E09822911D26400FCCFE0 /* PicterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicterCollectionViewCell.swift; sourceTree = "<group>"; };
+		035E09852916C54C00FCCFE0 /* PictureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureItem.swift; sourceTree = "<group>"; };
 		7E1E969111FE3CF8C4C23A2D /* Pods_DrawApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3D126AF46D73484B12F34B /* Pods-DrawApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawApplication.release.xcconfig"; path = "Target Support Files/Pods-DrawApplication/Pods-DrawApplication.release.xcconfig"; sourceTree = "<group>"; };
 		F74C36990B864EAF7EED2AB6 /* Pods-DrawApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawApplication.debug.xcconfig"; path = "Target Support Files/Pods-DrawApplication/Pods-DrawApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,12 +164,11 @@
 		030C2C962911CA5F003F4F40 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				035E09802911D01300FCCFE0 /* PicturesViewController.swift */,
+				035E09842916C52D00FCCFE0 /* PicturesViewController */,
 				030C2C982911CA79003F4F40 /* DrawViewController.swift */,
 				030C2C972911CA70003F4F40 /* EditBrushViewController */,
 				030C2CA02911CA8C003F4F40 /* EditLineTypeViewController.swift */,
 				030C2CA12911CA8D003F4F40 /* EditLineWidthViewController.swift */,
-				035E09822911D26400FCCFE0 /* PicterCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,8 +198,8 @@
 			children = (
 				030C2CAE2911CAB9003F4F40 /* DrawableView.swift */,
 				030C2CAB2911CAB8003F4F40 /* DrawnLayout.swift */,
-				030C2CAA2911CAB8003F4F40 /* Line.swift */,
 				030C2CAC2911CAB9003F4F40 /* Lines.swift */,
+				030C2CAA2911CAB8003F4F40 /* Line.swift */,
 				030C2CAD2911CAB9003F4F40 /* LineType.swift */,
 			);
 			path = DrawableView;
@@ -219,6 +220,16 @@
 				030C2CB62911CAD5003F4F40 /* TransmissionDriver.swift */,
 			);
 			path = CustomPresentation;
+			sourceTree = "<group>";
+		};
+		035E09842916C52D00FCCFE0 /* PicturesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				035E09802911D01300FCCFE0 /* PicturesViewController.swift */,
+				035E09822911D26400FCCFE0 /* PicterCollectionViewCell.swift */,
+				035E09852916C54C00FCCFE0 /* PictureItem.swift */,
+			);
+			path = PicturesViewController;
 			sourceTree = "<group>";
 		};
 		129F9116DF71493171660F53 /* Frameworks */ = {
@@ -353,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				030C2CC52911CAD7003F4F40 /* TransitionAnimated.swift in Sources */,
+				035E09862916C54C00FCCFE0 /* PictureItem.swift in Sources */,
 				030C2CB22911CAB9003F4F40 /* LineType.swift in Sources */,
 				030C2C992911CA79003F4F40 /* DrawViewController.swift in Sources */,
 				030C2CB12911CAB9003F4F40 /* Lines.swift in Sources */,

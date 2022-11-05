@@ -7,16 +7,12 @@
 
 import UIKit
 
-
-struct PictureItem: Identifiable {
-    let id: UUID
-    var image: UIImage?
-    var layout: Layout?
-}
-
 class PicturesViewController: UIViewController {
-    
-    private var pictureitems: [PictureItem] = []
+    private var pictureitems: [PictureItem] = [] {
+        didSet {
+            itemsIsEmptyBtn.isHidden = pictureitems.isEmpty ? false : true
+        }
+    }
     
     private lazy var collectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -29,17 +25,33 @@ class PicturesViewController: UIViewController {
         return collection
     }()
     
+    private var itemsIsEmptyBtn: ActionButton = {
+        let button = ActionButton()
+        button.setTitle("Нарисовать изображение", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.5
+        button.layer.cornerRadius = 6
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 1
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initUI()
         initConstraints()
+        initListeners()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(toDraw))
     }
     
     private func initUI() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
+        view.addSubview(itemsIsEmptyBtn)
         title = "Альбом"
     }
     
@@ -49,6 +61,18 @@ class PicturesViewController: UIViewController {
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(8)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-8)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-8)
+        }
+        
+        itemsIsEmptyBtn.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.left.greaterThanOrEqualToSuperview().offset(16)
+            make.right.lessThanOrEqualToSuperview().offset(-16)
+        }
+    }
+    
+    private func initListeners() {
+        itemsIsEmptyBtn.touchUp = { [weak self] _ in
+            self?.toDraw()
         }
     }
     
@@ -60,6 +84,7 @@ class PicturesViewController: UIViewController {
     
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension PicturesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         pictureitems.count
@@ -84,6 +109,7 @@ extension PicturesViewController: UICollectionViewDelegate, UICollectionViewData
     
 }
 
+// MARK: - DrawViewControllerDelegate
 extension PicturesViewController: DrawViewControllerDelegate {
     func savePicture(index: Int?, image: UIImage?, layout: Layout?) {
         if let index = index, index < pictureitems.count {
@@ -93,11 +119,12 @@ extension PicturesViewController: DrawViewControllerDelegate {
             return
         }
         let pictureItem = PictureItem(id: UUID(), image: image, layout: layout)
-        pictureitems.append(pictureItem)
+        pictureitems.insert(pictureItem, at: 0)
         collectionView.reloadData()
     }
 }
 
+// MARK: - PicterCollectionViewCellDelegate
 extension PicturesViewController: PicterCollectionViewCellDelegate {
     func openImage(with index: Int?) {
         let pictureitem = pictureitems[index!]
@@ -125,7 +152,5 @@ extension PicturesViewController: PicterCollectionViewCellDelegate {
         } completion: { _ in
             self.collectionView.reloadData()
         }
-
     }
-    
 }

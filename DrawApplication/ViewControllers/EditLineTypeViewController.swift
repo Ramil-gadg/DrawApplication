@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class EditLineTypeViewController: UIViewController {
-    
     private var currentType: LineType
     private var lineColor: UIColor
     var changedLineType: ((LineType) -> Void)?

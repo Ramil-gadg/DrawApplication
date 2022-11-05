@@ -12,7 +12,6 @@ protocol DrawnLayoutDelegate: AnyObject {
 }
 
 class DrawnLayout {
-    
     weak var delegate: DrawnLayoutDelegate?
     
     private (set) var layouts: [Layout] = [Layout()]
@@ -32,8 +31,9 @@ class DrawnLayout {
         checkState()
     }
     
-    func setupInitialLayoutIfNeeded(with layout: Layout?) {
-        layouts = [layout ?? Layout()]
+    func setupInitialLayout(with layout: Layout) {
+        layouts = [layout]
+        currentLayoutIndex = 0
         checkState()
     }
     
@@ -108,5 +108,4 @@ class DrawnLayout {
         }
         checkState()
     }
-    
 }

@@ -7,25 +7,38 @@
 
 import UIKit
 
+enum DrawVCState {
+    case show
+    case edit
+}
+
 protocol DrawViewControllerDelegate: AnyObject {
     func savePicture(index: Int?, image: UIImage?, layout: Layout?)
 }
 
 class DrawViewController: BaseViewController {
-    
     weak var delegate: DrawViewControllerDelegate?
     private let index: Int?
+    private var layout: Layout?
 
     private var navTitleView = NextPrevNavTitleView()
+    
+    private lazy var clearLayoutBarBtn = setupBarButtonItem(with: "xmark.circle", actionStr: "clearLayout")
+    private lazy var editLineBarBtn = setupBarButtonItem(with: "paintbrush.pointed", actionStr: "editLine")
+    private lazy var saveLayoutBtn = setupBarButtonItem(with: "checkmark.circle", actionStr: "saveLayout")
+    private lazy var sharePictureBarBtn = setupBarButtonItem(with: "square.and.arrow.up", actionStr: "sharePicture")
+    private lazy var editPictureBarBtn = setupBarButtonItem(with: "slider.horizontal.3", actionStr: "editPicture")
 
     private var drawableView: DrawableView
+    private var state: DrawVCState = .show
     
     init(index: Int?, layout: Layout?) {
         self.index = index
-        drawableView = DrawableView(with: layout)
+        self.layout = layout
+        drawableView = DrawableView()
         super.init(nibName: nil, bundle: nil)
         drawableView.delegate = self
-        drawableView.setupInitialLayoutIfNeeded()
+        drawableView.setupInitialLayout(with: layout)
     }
     
     required init?(coder: NSCoder) {
@@ -38,26 +51,45 @@ class DrawViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initUI()
         initConstraints()
+        state = (layout == nil) ? .edit : .show
+        switch state {
+        case .show:
+            setupShowPictureState(with: layout)
+        case .edit:
+            setupEditPictureState()
+        }
     }
     
     private func initUI() {
         view.backgroundColor = .white
         drawableView.backgroundColor = .white
         view.addSubview(drawableView)
-        setupRightNavigationBar()
         navigationItem.titleView = navTitleView
         navTitleView.delegate = self
     }
     
-    private func setupRightNavigationBar() {
-        let clearBarBtn = setupBarButtonItem(with: "xmark.circle", actionStr: "clearPrint")
-        let editBarBtn = setupBarButtonItem(with: "paintbrush.pointed", actionStr: "editPrint")
-        let saveBarBtn = setupBarButtonItem(with: "checkmark.circle", actionStr: "savePrint")
-        
-        navigationItem.rightBarButtonItems = [saveBarBtn, editBarBtn, clearBarBtn]
+    private func setupShowPictureState(with layout: Layout?) {
+        drawableView.isUserInteractionEnabled = false
+        self.layout = layout
+        drawableView.setupInitialLayout(with: layout)
+        navigationItem.titleView?.isHidden = true
+        setupShowPictureRightNavigationBar()
+    }
+    
+    private func setupEditPictureState() {
+        drawableView.isUserInteractionEnabled = true
+        navigationItem.titleView?.isHidden = false
+        setupEditPictureRightNavigationBar()
+    }
+    
+    private func setupEditPictureRightNavigationBar() {
+        navigationItem.rightBarButtonItems = [saveLayoutBtn, editLineBarBtn, clearLayoutBarBtn]
+    }
+    
+    private func setupShowPictureRightNavigationBar() {
+        navigationItem.rightBarButtonItems = [sharePictureBarBtn, editPictureBarBtn]
     }
     
     private func setupBarButtonItem(with imageName: String, actionStr: String) -> UIBarButtonItem {
@@ -69,7 +101,6 @@ class DrawViewController: BaseViewController {
     }
     
     private func initConstraints() {
-        
         drawableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
@@ -78,7 +109,7 @@ class DrawViewController: BaseViewController {
         }
     }
     
-    @objc func editPrint() {
+    @objc func editLine() {
         let editVC = EditBrushViewController(
             width: drawableView.currentWidth,
             color: drawableView.currentColor,
@@ -93,19 +124,47 @@ class DrawViewController: BaseViewController {
         transitionProvider?.height = 198
         self.present(editVC, animated: true)
     }
-    
-    @objc func clearPrint() {
+    @objc func clearLayout() {
         drawableView.clear()
     }
-    @objc func savePrint() {
+    @objc func saveLayout() {
+        if drawableView.currentLayoutIsEmpty {
+            print("Empty")
+            return
+        }
+        let alert = UIAlertController(title: "Сохранить изображение в альбом?", message: "", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Сохранить", style: .default) { [weak self] _ in
+            let layout = self?.drawableView.currentLayout
+            self?.setupShowPictureState(with: layout)
+            self?.savePictureInAlbom(layout: layout)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+    }
+    
+    private func savePictureInAlbom(layout: Layout?) {
         let renderer = UIGraphicsImageRenderer(size: drawableView.bounds.size)
         let image = renderer.image { ctx in
             view.drawHierarchy(in: drawableView.bounds, afterScreenUpdates: true)
         }
-        if drawableView.currentLayout?.lines.isEmpty == false {
-            delegate?.savePicture(index: index, image: image, layout: drawableView.currentLayout)
-            navigationController?.popViewController(animated: true)
+        delegate?.savePicture(index: index, image: image, layout: layout)
+    }
+    
+    @objc func sharePicture() {
+        let renderer = UIGraphicsImageRenderer(size: drawableView.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: drawableView.bounds, afterScreenUpdates: true)
         }
+        let imageToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    @objc func editPicture() {
+        setupEditPictureState()
     }
 }
 

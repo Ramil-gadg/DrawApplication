@@ -24,38 +24,37 @@ protocol DrawableViewDelegate: AnyObject {
 }
 
 class DrawableView: UIView {
-    
-    private lazy var layout = DrawnLayout(with: self)
-    private var state: DrawableViewState = .draw
-    private var eraseWidth: CGFloat = 10
+    private lazy var layouts = DrawnLayout(with: self)
     weak var delegate: DrawableViewDelegate?
-    private var initialLayout: Layout?
-    
-    private var longGesture = UILongPressGestureRecognizer()
-    
-    
+        
     var currentWidth: Int {
-        layout.currentWidth
+        layouts.currentWidth
     }
     
     var currentColor: UIColor {
-        layout.currentColor
+        layouts.currentColor
     }
     
     var currentLineType: LineType {
-        layout.currentLineType
+        layouts.currentLineType
     }
     
     var currentState: DrawableViewState {
-        layout.currentState
+        layouts.currentState
     }
     
     var currentLayout: Layout? {
-        layout.currentLayout
+        layouts.currentLayout
     }
     
-    init(with initialLayout: Layout?) {
-        self.initialLayout = initialLayout
+    var currentLayoutIsEmpty: Bool {
+        guard let currentLayout = currentLayout else {
+            return true
+        }
+        return currentLayout.lines.isEmpty
+    }
+    
+    init() {
         super.init(frame: .zero)
         layer.cornerRadius = 8
         layer.borderWidth = 1
@@ -69,7 +68,7 @@ class DrawableView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let currentLines = layout.currentLayout?.lines else { return }
+        guard let currentLines = layouts.currentLayout?.lines else { return }
         
         for pointsLine in currentLines {
             
@@ -93,75 +92,73 @@ class DrawableView: UIView {
             }
             context.strokePath()
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        layout.setupNewLayout()
+        layouts.setupNewLayout()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         
         guard let point = touches.first?.location(in: self),
-              (layout.currentLayout?.lines.count) ?? 0 > 0 else {
+              (layouts.currentLayout?.lines.count) ?? 0 > 0 else {
                   return
               }
-        layout.appendPointInCurrentLine(point)
+        layouts.appendPointInCurrentLine(point)
         setNeedsDisplay()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        if layout.currentLayout?.lines.last?.points.isEmpty == true {
-            layout.removeLastLayout()
+        if layouts.currentLayout?.lines.last?.points.isEmpty == true {
+            layouts.removeLastLayout()
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        if layout.currentLayout?.lines.last?.points.isEmpty == true {
-            layout.removeLastLayout()
+        if layouts.currentLayout?.lines.last?.points.isEmpty == true {
+            layouts.removeLastLayout()
         }
     }
     
-    func setupInitialLayoutIfNeeded() {
-        self.layout.setupInitialLayoutIfNeeded(with: initialLayout)
+    func setupInitialLayout(with layout: Layout?) {
+        self.layouts.setupInitialLayout(with: layout ?? Layout())
         setNeedsDisplay()
     }
     
     func clear() {
-        layout.clearLayout()
+        layouts.clearLayout()
         setNeedsDisplay()
     }
     
     func pop() {
-        layout.decreaseIndex()
+        layouts.decreaseIndex()
         setNeedsDisplay()
     }
     
     func push() {
-        layout.increaseIndex()
+        layouts.increaseIndex()
         setNeedsDisplay()
     }
     
     func changeLineWidth(with width: Int) {
-        layout.currentWidth = width
+        layouts.currentWidth = width
     }
     
     func changeLineColor(with color: UIColor) {
-        layout.currentColor = color
+        layouts.currentColor = color
     }
     
     func changeLineType(with type: LineType) {
-        layout.currentLineType = type
+        layouts.currentLineType = type
     }
     
     func changeState(with state: DrawableViewState) {
-        layout.currentState = state
+        layouts.currentState = state
     }
-
 }
 
 // MARK: - DrawnLayoutDelegate
@@ -170,5 +167,4 @@ extension DrawableView: DrawnLayoutDelegate {
     func indexInEdge(with edge: Edge) {
         delegate?.layoutsEdge(with: edge)
     }
-    
 }

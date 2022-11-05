@@ -8,7 +8,6 @@
 import UIKit
 
 class EditLineWidthViewController: BaseViewController {
-
     var changedLineWidth: ((Int) -> Void)?
     
     private var sliderValue: Int
@@ -67,7 +66,6 @@ class EditLineWidthViewController: BaseViewController {
     }
     
     private func initConstraints() {
-        
         valueLbl.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(32)
             make.centerX.equalToSuperview()
@@ -102,5 +100,4 @@ class EditLineWidthViewController: BaseViewController {
         changedLineWidth?(sliderValue)
         self.dismiss(animated: true)
     }
-
 }

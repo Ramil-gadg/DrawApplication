@@ -13,7 +13,6 @@ protocol PicterCollectionViewCellDelegate: AnyObject {
 }
 
 class PicterCollectionViewCell: UICollectionViewCell {
-    
     static let identifier = "PicterCollectionViewCell"
     
     weak var delegate: PicterCollectionViewCellDelegate?
@@ -81,6 +80,4 @@ class PicterCollectionViewCell: UICollectionViewCell {
     @objc private func imageTapped() {
         delegate?.openImage(with: index)
     }
-    
-    
 }

@@ -14,7 +14,6 @@ protocol NextPrevNavTitleViewDelegate: AnyObject {
 }
 
 class NextPrevNavTitleView: UIView {
-    
     weak var delegate: NextPrevNavTitleViewDelegate?
     
     private let nextButton: ActionButton = {

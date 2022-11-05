@@ -8,7 +8,6 @@
 import UIKit
 
 struct Layout {
-    
     var lines: [Line] = []
     var eraseLines: [Line] = []
     
@@ -25,13 +24,7 @@ struct Layout {
         lines[lines.count - 1].points.append(point)
     }
     
-    mutating func changePoints(with points: [CGPoint], lineIndex: Int) {
-        guard lines.count > 0 else { return }
-        lines[lineIndex].points = points
-    }
-    
     mutating func appendEraseLine(_ line: Line) {
         eraseLines.append(line)
     }
-    
 }

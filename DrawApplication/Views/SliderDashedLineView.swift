@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class SliderDashedLineView: UIView {
-    
     var changedLineDashedDistance: ((Int) -> Void)?
     
     private var sliderValue: Int = 1

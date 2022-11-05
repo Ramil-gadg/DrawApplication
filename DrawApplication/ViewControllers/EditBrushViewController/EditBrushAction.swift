@@ -8,7 +8,6 @@
 import Foundation
 
 enum EditBrushAction {
-    
     case lineWidth
     case lineType
     case isEraser(Bool)
